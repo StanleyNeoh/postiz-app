@@ -113,7 +113,11 @@ export class IntegrationService {
     const uploadedPicture = picture
       ? picture?.indexOf('imagedelivery.net') > -1
         ? picture
-        : await this.storage.uploadSimple(picture)
+        : await this.storage.uploadSimple(picture).catch((err) => {
+                    console.error("Uploading the integrations image failed.");
+                    console.error(err);
+                    return undefined;
+                  })
       : undefined;
 
     return this._integrationRepository.createOrUpdateIntegration(

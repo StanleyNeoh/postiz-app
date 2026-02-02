@@ -116,6 +116,7 @@ services:
     networks:
       - postiz-network
       - temporal-network
+      - coolify
     depends_on:
       postiz-postgres:
         condition: service_healthy
@@ -240,6 +241,7 @@ services:
       - TEMPORAL_CORS_ORIGINS=http://127.0.0.1:3000
     networks:
       - temporal-network
+      - coolify
 
 volumes:
   postgres-volume:
@@ -260,3 +262,5 @@ networks:
   temporal-network:
     driver: bridge
     name: temporal-network
+  coolify:
+    external: true

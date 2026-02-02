@@ -122,6 +122,8 @@ services:
         condition: service_healthy
       postiz-redis:
         condition: service_healthy
+      temporal:
+        condition: service_started
 
   postiz-postgres:
     image: postgres:17-alpine
